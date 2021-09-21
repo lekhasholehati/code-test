@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-3" *ngFor="let film of films">
+			<div class="card wrapper-card mb-3">
+				<img
+					src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+					class="card-img-top" alt="img-film">
+				<div class="card-body">
+					<h5 class="card-title">{{film['title']}}</h5>
+					<p class="card-text">Release Date {{film['release_date']}}</p>
+					<button class="btn btn-primary" (click)="openModal(template, film)">See Sinopsis</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{detailFilm.title}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+		<p class="mb-0">Director {{detailFilm.director}}</p>
+		<p class="mt-0">Producer {{detailFilm.producer}}</p>
+		<h5>Opening Crawl</h5>
+		<p>{{detailFilm.opening_crawl}}</p>
+  </div>
+</ng-template>
